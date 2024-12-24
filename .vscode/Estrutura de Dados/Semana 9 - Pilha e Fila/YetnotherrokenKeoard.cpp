@@ -1,7 +1,3 @@
-/*
-ta dando wa no codeforces
-*/
-
 #include <bits/stdc++.h>
 
 using namespace std;
