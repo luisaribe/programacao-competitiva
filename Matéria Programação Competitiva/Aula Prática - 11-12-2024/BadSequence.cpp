@@ -1,46 +1,66 @@
-/*
-WA
-*/
-
 #include <bits/stdc++.h>
- 
+
 using namespace std;
 
+#define endl "\n"
+#define pb push_back
+#define tam(z) (long long)z.size()
+#define all(x) x.begin(), x.end()
+
+typedef long long ll;
+typedef vector<ll> vll;
+typedef pair<ll, ll> pll;
+typedef tuple<ll, ll, ll> tll;
+
 int main (){
- 
-    long long tam, abre=0, fecha=0, fecha_antes=0;
-    char str[200002];
- 
-    scanf("%lld", &tam);
-    scanf("%s", str);
- 
-    if(tam%2!=0){
-        abre=2;
-    }else{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
 
-        
-        for(int i=0; i<tam; i++){
+    string str;
+    ll tam;
+    stack <char> pilha;
+    bool ans = true;
+    ll tolerancia_fecha = 0;
+    ll tolerancia_abre = 0;
 
-            if(str[i]== '('){
-                abre++;
-                //printf("%d", i);
+    cin >> tam;
+
+    cin >> str;
+
+    for(ll i=0; i<tam;i++){
+        if(str[i] == '('){
+            pilha.push(str[i]);
+        }else{
+            if(!pilha.empty()){
+                pilha.pop();
             }else{
-                if(abre){ 
-                fecha++;
+                if(tolerancia_fecha < 1){
+                    tolerancia_fecha++;
                 }else{
-                    fecha_antes++;
+                    ans = false;
                 }
             }
         }
-
     }
- 
-        if((abre == fecha+1 && fecha_antes==1) || (fecha == abre)|| tam==0){
-            printf("Yes\n");
+
+    if(tolerancia_fecha == 1){
+        if(pilha.empty()){
+            ans = false;
         }else{
-            printf("No\n");
+            if(tam(pilha) != 1){
+                ans = false;
+            }else{
+                pilha.pop();
+            }
         }
- 
- 
+    }
+
+    if(ans == true && pilha.empty()){
+        cout << "Yes" << endl;
+    }else{
+        cout << "No" << endl;
+    }
+
     return 0;
 }

@@ -17,27 +17,27 @@ int main (){
     cin.tie(0);
     cout.tie(0);
 
-    string str;
-    stack <char> pilha;
-    cin >> str;
-
-    for(ll i=0; i<tam(str); i++){
-        if(!pilha.empty()){
-            if(pilha.top() == str[i]){
-                pilha.pop();
-            }else{
-                pilha.push(str[i]);
-            }
+    ll menor, aux, n;
+    vector <ll> k(4);
+    for(ll i=0; i<4; i++){
+        cin >> aux;
+        k[i] = aux;
+        if(i==0){
+            menor=aux;
         }else{
-             pilha.push(str[i]);
+            if(i>1 && aux < menor){
+                menor = aux;
+            }
         }
     }
 
-    if(pilha.empty()){
-        cout << "Yes" << endl;
+    if(k[0] - menor > k[1]){
+        n = k[1];
     }else{
-        cout << "No" << endl;
+        n = k[0] - menor;
     }
+
+    cout << (menor*256+n*32) << endl;
 
     return 0;
 }

@@ -18,25 +18,15 @@ int main (){
     cout.tie(0);
 
     string str;
-    stack <char> pilha;
+
     cin >> str;
 
-    for(ll i=0; i<tam(str); i++){
-        if(!pilha.empty()){
-            if(pilha.top() == str[i]){
-                pilha.pop();
-            }else{
-                pilha.push(str[i]);
-            }
-        }else{
-             pilha.push(str[i]);
-        }
-    }
+    sort(all(str));
 
-    if(pilha.empty()){
-        cout << "Yes" << endl;
-    }else{
-        cout << "No" << endl;
+    ll b = lower_bound(all(str), str[tam(str)-1]) - str.begin();
+    ll c = tam(str)-b;
+    while(c--){
+        cout << str[tam(str)-1];
     }
 
     return 0;

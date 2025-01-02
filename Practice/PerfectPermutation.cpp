@@ -17,26 +17,20 @@ int main (){
     cin.tie(0);
     cout.tie(0);
 
-    string str;
-    stack <char> pilha;
-    cin >> str;
+    ll qnt;
 
-    for(ll i=0; i<tam(str); i++){
-        if(!pilha.empty()){
-            if(pilha.top() == str[i]){
-                pilha.pop();
+    cin >> qnt;
+
+    if(qnt%2==0){ 
+        for(ll i=1; i<=qnt; i++){
+            if(i%2!=0){
+                cout << i+1 << ' ';
             }else{
-                pilha.push(str[i]);
+                cout << i-1 << ' ';
             }
-        }else{
-             pilha.push(str[i]);
         }
-    }
-
-    if(pilha.empty()){
-        cout << "Yes" << endl;
     }else{
-        cout << "No" << endl;
+        cout << "-1" << endl;
     }
 
     return 0;

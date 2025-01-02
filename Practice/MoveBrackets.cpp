@@ -17,33 +17,27 @@ int main (){
     cin.tie(0);
     cout.tie(0);
 
-    ll testes, n, menor, ans, aux;
+    ll testes, qnt;
 
     cin >> testes;
 
     while(testes--){
+        string str;
+        cin >> qnt >> str;
+        stack<char> pilha;
 
-        cin >> n;
-        vector <ll> v(n);
-        ans=0;
-
-        for(ll i=0; i<n; i++){
-            cin >> aux;
-            v[i] = aux;
-            if(i == 0){
-                menor = aux;
+        for(ll i=0; i<qnt; i++){
+            if(str[i] == '('){
+                pilha.push(str[i]);
             }else{
-                if(aux < menor){
-                    menor = aux;
+                if(!pilha.empty()){
+                    pilha.pop();
                 }
             }
         }
 
-        for(ll i=0; i<n; i++){
-            ans+=(v[i]-menor);
-        }
-
-        cout << ans << endl;
+        cout << tam(pilha) << endl;
     }
+
     return 0;
 }

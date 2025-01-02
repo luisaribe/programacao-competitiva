@@ -17,33 +17,24 @@ int main (){
     cin.tie(0);
     cout.tie(0);
 
-    ll testes, n, menor, ans, aux;
+    ll ans, count, testes, n, i, m, oito;
 
     cin >> testes;
 
     while(testes--){
-
         cin >> n;
-        vector <ll> v(n);
-        ans=0;
-
-        for(ll i=0; i<n; i++){
-            cin >> aux;
-            v[i] = aux;
-            if(i == 0){
-                menor = aux;
-            }else{
-                if(aux < menor){
-                    menor = aux;
-                }
-            }
+        n=n*n;
+        i=1, oito=8, ans=0, count=0;
+        while((count+1)<n){
+            ans+=(i*oito);
+            oito+=8;
+            i++;
+            count+=oito;
         }
-
-        for(ll i=0; i<n; i++){
-            ans+=(v[i]-menor);
-        }
-
+        if(n==1) ans=0;
         cout << ans << endl;
+        
     }
+
     return 0;
 }
