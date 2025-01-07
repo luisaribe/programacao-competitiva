@@ -9,6 +9,7 @@
         "forward_list": "cpp",
         "list": "cpp",
         "vector": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "fila.h": "c"
     }
 }

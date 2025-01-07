@@ -17,7 +17,7 @@ void Enfileirar(Fila* fila, int item){
     novo->dado = item;
     novo->prox = NULL;
 
-    if(fila->tamano == 0){
+    if(fila->tamanho == 0){
         fila->primeiro=novo;
     }else{
         fila->ultimo->prox=novo;
@@ -28,7 +28,7 @@ void Enfileirar(Fila* fila, int item){
 }
 
 int Remove(Fila* fila){
-    if(fila->inicio == NULL) return 0;
+    if(fila->primeiro == NULL) return 0;
 
     No* atual = fila->primeiro;
     int ans = atual->dado;
@@ -40,7 +40,7 @@ int Remove(Fila* fila){
 }
 
 int InicioFila(Fila* fila){
-    if(fila->inicio == NULL) return -1;
+    if(fila->primeiro == NULL) return -1;
         return fila->primeiro->dado;
 }
 

@@ -20,7 +20,7 @@ void Add(Lista *lista, int item){
 }
 
 int search(Lista *lista, int item){
-    No *atual = Lista->inicio;
+    No *atual = lista->inicio;
 
     while(atual != NULL){
         if(atual -> dado == item) return 1;
@@ -38,7 +38,7 @@ int isEmpty(Lista *lista){
 }
 
 void append(Lista *lista, int item){
-    No *novo = (*No) malloc (sizeof(No));
+    No *novo = (No*) malloc (sizeof(No));
 
     novo->dado = item;
     novo->prox = NULL;
@@ -46,7 +46,7 @@ void append(Lista *lista, int item){
     if(lista->tamanho == 0){
         lista->inicio = novo;
     }else{
-        No *atual = Lista->inicio;
+        No *atual = lista->inicio;
         while(atual->prox != NULL){
             atual=atual->prox;
         }
@@ -122,8 +122,8 @@ int Pop(Lista *lista){
     if(lista->inicio == NULL) return -1;
 
     No *atual = lista->inicio;
-    if(tamanho == 1){
-        lista->inicio = NULL
+    if(lista->tamanho == 1){
+        lista->inicio = NULL;
     }else{ 
         while(atual->prox->prox != NULL){
             atual = atual->prox;
