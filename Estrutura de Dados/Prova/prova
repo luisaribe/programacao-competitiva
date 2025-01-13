@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+typedef struct{
+    int codigo;
+    char *nome;
+} Profissao;
+
+
+Profissao* aloca_profissao(unsigned int tamanho_nome){
+    Profissao* nova = (Profissao*) malloc (sizeof(Profissao));
+    nome* novo = (nome*) malloc(sizeof(tamanho_nome));
+    
+    return novo;
+}
+/*
+if(head->next == NULL) return 0;
+    
+    struct ListNode* proxima = head->next;
+    struct ListNode* ans = head->next;
+    while(head->next!= NULL){
+    head->next = proxima->next;
+    proxima->next = head;
+    head = head->next;
+    }
+    
+    
+    return ans;
+    */
+
+int main (){
+
+    int t;
+    Profissao* n;
+
+    scanf("%d", &t);
+
+    aloca_profissao(t);
+
+    printf("%d\n", bytes_alocados());
+
+
+    return 0;
+}
