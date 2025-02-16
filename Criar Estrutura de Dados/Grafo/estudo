@@ -1,0 +1,156 @@
+Um grafo pode ser representado por G onde G = (V,E).
+● V é um conjunto de vértices
+● E é um conjunto de arestas.
+● Cada aresta é uma tupla (v,w) onde v,w ∈ V.
+● Podemos adicionar um terceiro componente à
+tupla de arestas para representar o peso
+
+● Dígrafo
+As arestas podem ou não ter direção
+○ Existe uma orientação quanto ao sentido da aresta
+■ Em um grafo direcionado ou digrafo, se uma aresta liga os vértices A a B, isso
+significa que podemos ir de A para B, mas não o contrário
+
+● Grau
+○ Indica o número de arestas que conectam um vértice do grafo a outros vértices
+■ número de vizinhos que aquele vértice possui no grafo (que chegam ou partem
+dele)
+○ No caso dos dígrafos, temos dois tipos de grau:
+■ grau de entrada: número de arestas que chegam ao vértice;
+■ grau de saída: número de arestas que partem do vértice.
+
+Busca em Profundidade
+● Funcionamento
+○ Partindo de um vértice inicial, a busca explora o máximo possível cada um dos vizinhos
+de um vértice antes de retroceder (backtracking)
+○ Em outras palavras, esse tipo de busca se inicia em um vértice e se aprofunda nos
+vértices vizinhos deste até encontrar um dos dois casos:
+■ o alvo da busca
+■ um vértice sem vizinhos que possam ser visitados
+● Backtracking
+○ O grafo é percorrido de maneira sistemática até que a busca falhe, ou se encontre um
+vértice sem vizinhos
+■ Nesse momento entra em funcionamento o mecanismo de backtracking: a busca
+retorna pelo mesmo caminho percorrido com o objetivo de encontrar um caminho
+alternativo.
+○ Trata-se de um mecanismo usado em linguagens de programação como Prolog.
+● Complexidade
+○ Considerando um grafo G(V,A), onde |V| é o número de vértices e |A| é o número de
+arestas, a complexidade no pior caso é
+■ custo de ir para cada vértice é proporcional a |V|
+■ custo de transitar em cada aresta é proporcional |A|
+■ complexidade da busca no pior caso O(|V| + |A|)
+● Aplicações
+○ encontrar componentes conectados e fortemente conectados;
+○ ordenação topológica de um grafo;
+○ procurar a saída de um labirinto;
+○ verificar se um grafo é completamente conexo
+■ por exemplo, a rede de computadores esta funcionando direito ou não;
+○ implementar a ferramenta de preenchimento
+■ balde de pintura do Photoshop
+
+Busca em largura
+● Funcionamento
+○ Partindo de um vértice inicial, a busca explora todos os vizinhos de um vértice. Em
+seguida, para cada vértice vizinho, ela repete esse processo, visitando os vértices ainda
+inexplorados
+○ Em outras palavras, esse tipo de busca se inicia em um vértice e então visita todos os
+seus vizinhos antes de se aprofundar na busca. Esse processo continua até que
+■ o alvo da busca seja encontrado
+■ não existam mais vértices a serem visitados. 
+● Esse algoritmo faz uso do conceito de fila
+○ O grafo é percorrido de maneira sistemática, primeiro marcando como “visitados” todos
+os vizinhos de um vértice e em seguida começa a visitar os vizinhos de cada vértice na
+ordem em que eles foram marcados.
+○ Para realizar essa tarefa, uma fila é utilizada para administrar a visitação dos vértices
+■ o primeiro vértice marcado (ou marcado a mais tempo) é o primeiro a ser visitado.
+● Complexidade
+○ Considerando um grafo G(V,A), onde |V| é o número de vértices e |A| é o número de
+arestas, a complexidade no pior caso é
+■ custo de inserção e remoção em fila é constante
+■ custo de enfileirar e remover todos os vértices uma vez O(|V|)
+■ custo de utilizar todas as arestas |A|
+■ complexidade da busca no pior caso O(|V| + |A|)
+● Aplicações
+○ achar todos os vértices conectados a apenas um componente;
+○ achar o menor caminho entre dois vértices;
+○ testar se um grafo é bipartido;
+○ roteamento: encontrar um número mínimo de hops em uma rede.
+■ os hops são os vértices intermediários no caminho correspondente à conexão;
+○ encontrar número mínimo de intermediários entre 2 pessoas.
+
+Busca pelo menor caminho
+● Menor caminho
+○ Caminho mais curto ou caminho geodésico
+○ Caminho que apresenta o menor comprimento dentre todos os possíveis caminhos que
+conectam esses vértices
+■ O comprimento pode ser o número de arestas que conectam os dois vértices ou a
+soma dos pesos das arestas que compõem esse caminho (grafo ponderado)
+● Uma das maneiras de achar o menor caminho é utilizando o algoritmo de
+Dijkstra
+○ Talvez o mais conhecido algoritmo
+○ Trabalha com grafos e digrafos, ponderados ou não.
+■ No caso de um grafo ponderado, as arestas não podem ter pesos negativos. 
+● Funcionamento
+○ Partindo de um vértice inicial, o algoritmo de Dijkstra calcula a menor distância deste
+vértice a todos os demais (desde que exista um caminho entre eles)
+
+● Laço
+○ Uma aresta é chamada de laço se seu vértice de partida é o mesmo que o de chagada
+■ A aresta conecta o vértice a ele mesmo
+
+● Caminho
+○ Comprimento do caminho: número de vértices que precisamos percorrer de um vértice
+até o outro
+
+● Grafo trivial
+○ Possui um único vértice e nenhuma aresta
+● Grafo simples
+○ Grafo não direcionado, sem laços e sem arestas paralelas (multigrafo)
+
+● Grafo completo
+○ Grafo simples onde cada vértice se conecta a todos os outros vértices do grafo
+
+● Grafo regular
+○ Grafo onde todos os seus vértices possuem o mesmo grau (número de arestas ligadas a
+ele)
+○ Todo grafo completo é também regular
+
+● Grafos isomorfos
+○ Dois grafos, G1(V1,A1) e G2(V2,A2), são ditos isomorfos se existe uma função que faça
+o mapeamento de vértices e arestas de modo que os dois grafos se tornem coincidentes.
+■ Em outras palavras, dois grafos são isomorfos se existe uma função f onde, para
+cada dois vértices a e b adjacentes no grafo G1, f(a) e f(b) também são adjacentes
+no grafo G2.
+
+● Grafo Euleriano
+○ Grafo que possui um ciclo que visita todas as suas arestas apenas uma vez, iniciando e
+terminando no mesmo vértice. 
+
+● Grafo Hamiltoniano
+○ Grafo que possui um caminho que visita todos os seus vértices apenas uma vez.
+○ Pode ser um ciclo
+
+● Como representar um grafo no computador?
+○ Existem duas abordagens muito utilizadas:
+
+■ Matriz de Adjacência
+○ Utiliza uma matriz N x N para armazenar o grafo, onde N é o número de vértices
+■ Alto custo computacional, O(N2
+)
+○ Uma aresta é representada por uma marca na posição (i , j) da matriz
+■ Aresta liga o vértice 
+
+■ Lista de Adjacência
+○ Utiliza uma lista de vértices para descrever as relações entre os vértices.
+■ Um grafo contendo N vértices utiliza um array de ponteiros de tamanho N para
+armazenar os vértices do grafo
+■ Para cada vértice é criada uma lista de arestas, onde cada posição da lista
+armazena o índice do vértice a qual aquele vértice se conecta
+
+● Qual representação utilizar?
+○ Lista de adjacência é mais indicada para um grafo que possui muitos vértices mas
+poucas arestas ligando esses vértices.
+○ A medida que o número de arestas cresce e não havendo nenhuma outra informação
+associada a aresta (por exemplo, seu peso), o uso de uma matriz de adjacência se torna
+mais eficiente

@@ -1,0 +1,6 @@
+atr: atribuição (1 segundo)
+es: entrada ou saída de dado (5 segundos)
+cmp: teste lógico de comparação (0,5 segundo)
+
+copilot:
+// qual é o custo computacional deste algoritmo na notação bigO?

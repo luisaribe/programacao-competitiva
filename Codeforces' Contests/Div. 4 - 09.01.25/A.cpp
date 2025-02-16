@@ -12,30 +12,21 @@ typedef vector<ll> vll;
 typedef pair<ll, ll> pll;
 typedef tuple<ll, ll, ll> tll;
 
-int msb(long long n) {
-    int i = 0;
-    while (n > 0) {
-        n >>= 1; 
-        i++;      
-    }
-    return i - 1;  
-}
-
 int main (){
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
+    char str[11];
 
-    ll t, n, m, pos;
+    int n;
 
-    cin >> t;
+    scanf("%d", &n);
 
-    while(t--){
-        cin >> n;
-        pos = msb(n);
-        m = (1LL << (pos))-1;
-       
-        cout << m << endl;
+    while(n--){
+        scanf("%s", str);
+        str[strlen(str)-2]='i';
+        str[strlen(str)-1]='\0';
+        printf("%s", str);
     }
 
     return 0;
