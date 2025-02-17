@@ -54,8 +54,13 @@ int main() {
 
     for(ll i=0; i<n; i++){
         cin >> aux;
-        ans= lb(cubos, aux);
-        cout << ans << " ";
+         ans = lower_bound(cubos.begin(), cubos.end(), aux) - cubos.begin();
+
+        if (ans < c && cubos[ans] == aux) {
+            cout << ans+1 << " ";  
+        } else {
+            cout << "-1 " << " "; 
+        }
     }
     
     return 0;
