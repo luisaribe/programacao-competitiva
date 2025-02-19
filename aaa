@@ -1,0 +1,140 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define endl "\n"
+#define pb push_back
+#define tam(z) (long long)z.size()
+#define all(x) x.begin(), x.end()
+
+typedef long long ll;
+typedef vector<ll> vll;
+typedef pair<ll, ll> pll;
+typedef tuple<ll, ll, ll> tll;
+
+ll n, m, ansv, ansh;
+char bolo[12][12];
+bool v[12][12];
+
+void voltah(ll y, ll x) {
+	for(ll i=0; i<x; i++) {
+		v[y][i]=false;
+		ansh--;
+	}
+}
+
+ll horizontal(ll y) {
+	ll ansh=0;
+	for(ll i=0; i<m; i++) {
+		if(bolo[y][i]=='S') {
+			//voltah(y, i);
+			for(ll j=0; j<i; j++) {
+				v[i][j]=false;
+				ansh--;
+			}
+			break;
+		}
+		if(!v[y][i]) {
+			ansh++;
+		}
+		v[y][i]==true;
+
+	}
+	//cout << "ansh" << " " << ansh << endl;
+	return ansh;
+}
+
+void voltav(ll y, ll x) {
+	for(ll i=0; i<y; i++) {
+		v[i][x]=false;
+		ansv--;
+	}
+}
+
+ll vertical(ll x) {
+	ll ansv=0;
+	for(ll i=0; i<n; i++) {
+		if(bolo[i][x]=='S') {
+			//voltav(i, x);
+			for(ll j=0; j<i; j++) {
+				v[j][i]=false;
+				ansv--;
+			}
+			break;
+		}
+		if(!v[i][x]) {
+			ansv++;
+		}
+		v[i][x]==true;
+
+	}
+	//cout << "ansv" << " " << ansv << endl;
+	return ansv;
+}
+
+ll solve() {
+	ll ans=0;
+	for(ll i=0; i<n; i++) {
+		//ans+=horizontal(i);
+		for(ll l=0; l<m; l++) {
+			if(bolo[i][l]=='S') {
+				//voltah(y, i);
+				for(ll j=0; j<l; j++) {
+					v[i][j]=false;
+					//cout << "v" << " " ;
+					ans--;
+				}
+				break;
+			}
+			if(v[i][l]==false) {
+				ans++;
+			}
+			v[i][l]=true;
+
+		}
+
+	}
+	cout << "ansh" << " " << ans << endl;
+	for(ll p=0; p<m; p++) {
+		//ans+=vertical(i);
+		for(ll i=0; i<n; i++) {
+			if(bolo[i][p]=='S') {
+				//voltav(i, x);
+				for(ll j=0; j<i; j++) {
+					v[j][i]=false;
+					ans--;
+				}
+				break;
+			}
+			if(v[i][p]==false) {
+			    cout << i << " " << p << endl;
+				ans++;
+			}
+			v[i][p]=true;
+
+		}
+	}
+	cout << "ansv" << " " << ans << endl;
+	return ans;
+}
+
+int main () {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+	ll a;
+
+	cin >> n >> m;
+	for(ll i=0; i<n; i++) {
+		for(ll j=0; j<m; j++) {
+
+			cin >> bolo[i][j];
+		}
+	}
+
+	a= solve();
+
+	cout << a << endl;
+
+	return 0;
+}
